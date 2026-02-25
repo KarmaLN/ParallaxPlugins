@@ -15,7 +15,7 @@ local function CleanUpTimer()
                 RunConsoleCommand("g_ragdoll_maxcount", "15")
                 RunConsoleCommand("vj_run_cleanup","corpses")
             end)
-            ax.util:Print(Color(0, 255, 0),"Completed NPC Corpse Cleanup)
+            ax.util:Print(Color(0, 255, 0),"Completed NPC Corpse Cleanup")
         end)
     end
 end
