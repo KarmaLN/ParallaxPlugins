@@ -19,7 +19,9 @@ local function CleanUpTimer()
                 
             timer.Simple(2, function()
                 RunConsoleCommand("g_ragdoll_maxcount", "15")
-                RunConsoleCommand("vj_run_cleanup","corpses")
+                if SERVER then
+                	game.ConsoleCommand("vj_run_cleanup corpses")
+                end
             end)
             ax.util:Print(Color(0, 255, 0),"Completed NPC Corpse Cleanup")
         end)
