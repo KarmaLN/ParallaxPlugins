@@ -4,11 +4,17 @@ MODULE.Name = "NPC Corpse Cleanup"
 MODULE.Description = "A simple timer that deletes NPC Corpses"
 MODULE.Author = "KarmaLN"
 
-MODULE.CleanupTime = 180
+ax.config:Add("corpseCleanupTime", ax.type.number, 180, {
+    description = "Sets the Cooldown on NPC Corpse Cleanup",
+    min = 30,
+    max = 3600,
+    decimals = 0,
+    category = "Plugins",
+})
 
 local function CleanUpTimer()
     if !timer.Exists("DeleteNPCCorpses") then
-        timer.Create("DeleteNPCCorpses", MODULE.CleanupTime, 0, function()
+        timer.Create("DeleteNPCCorpses", ax.config:Get("corpseCleanupTime"), 0, function()
             RunConsoleCommand("g_ragdoll_maxcount", "0")
                 
             timer.Simple(2, function()
