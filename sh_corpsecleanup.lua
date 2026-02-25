@@ -4,9 +4,11 @@ MODULE.Name = "NPC Corpse Cleanup"
 MODULE.Description = "A simple timer that deletes NPC Corpses"
 MODULE.Author = "KarmaLN"
 
+MODULE.CleanupTime = 180
+
 local function CleanUpTimer()
     if !timer.Exists("DeleteNPCCorpses") then
-        timer.Create("DeleteNPCCorpses", 180, 0, function()
+        timer.Create("DeleteNPCCorpses", MODULE.CleanupTime, 0, function()
             RunConsoleCommand("g_ragdoll_maxcount", "0")
                 
             timer.Simple(2, function()
@@ -18,6 +20,6 @@ local function CleanUpTimer()
     end
 end
 
-function MODULE:InitPostEntity()
+hook.Add("OnSchemaLoaded", "ParallaxCorpseCleanup", function()
 	CleanUpTimer()
-end
+end)
