@@ -41,6 +41,7 @@ local function IncludeWorkshopAddons()
     )
 end
 
-hook.Add("OnSchemaLoaded", "ParallaxContentLoad", function()
+function MODULE:OnSchemaLoaded()
     IncludeWorkshopAddons()
-end)
+end
+
