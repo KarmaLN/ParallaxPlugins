@@ -26,6 +26,6 @@ local function CleanUpTimer()
     end
 end
 
-hook.Add("OnSchemaLoaded", "ParallaxCorpseCleanup", function()
+function MODULE:OnSchemaLoaded()
 	CleanUpTimer()
-end)
+end
